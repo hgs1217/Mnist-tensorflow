@@ -86,8 +86,7 @@ class Lenet:
 
         h_pool2_flat = tf.reshape(h_pool2, [-1, 7 * 7 * 64])
         h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)
-        keep_prob = tf.placeholder(tf.float32, name="keep_prob")
-        h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
+        h_fc1_drop = tf.nn.dropout(h_fc1, self.keep_prob)
         W_fc2 = weight_variable([1024, 10])
         b_fc2 = bias_variable([10])
 

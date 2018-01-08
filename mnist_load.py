@@ -6,6 +6,7 @@ import struct
 import numpy as np
 from alexnet import Alexnet
 from lenet import Lenet
+from vgg16 import VGG16
 
 
 def load_mnist(path, kind='train'):
@@ -37,11 +38,14 @@ def main():
     images, labels = load_mnist("D:/Computer Science/Github/Mnist-tensorflow/")
     images_test, labels_test = load_mnist("D:/Computer Science/Github/Mnist-tensorflow/", "t10k")
 
-    # lenet = Lenet(images, labels, images_test, labels_test, 0.5, 100, 20000)
-    # lenet.train()
+    lenet = Lenet(images, labels, images_test, labels_test, 0.5, 100, 20000)
+    lenet.train()
 
-    alexnet = Alexnet(images, labels, images_test, labels_test, 0.5, 100, 300)
-    alexnet.train()
+    # alexnet = Alexnet(images, labels, images_test, labels_test, 0.5, 100, 300)
+    # alexnet.train()
+
+    # vgg16 = VGG16(images, labels, images_test, labels_test, 0.5, 100, 300)
+    # vgg16.train()
 
 
 if __name__ == '__main__':
