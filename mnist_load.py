@@ -7,6 +7,7 @@ import numpy as np
 from alexnet import Alexnet
 from lenet import Lenet
 from vgg16 import VGG16
+from lstm import LSTM
 
 
 def load_mnist(path, kind='train'):
@@ -38,14 +39,17 @@ def main():
     images, labels = load_mnist("D:/Computer Science/Github/Mnist-tensorflow/")
     images_test, labels_test = load_mnist("D:/Computer Science/Github/Mnist-tensorflow/", "t10k")
 
-    lenet = Lenet(images, labels, images_test, labels_test, 0.5, 100, 20000)
-    lenet.train()
+    # lenet = Lenet(images, labels, images_test, labels_test, 0.5, 100, 20000)
+    # lenet.train()
 
     # alexnet = Alexnet(images, labels, images_test, labels_test, 0.5, 100, 300)
     # alexnet.train()
 
     # vgg16 = VGG16(images, labels, images_test, labels_test, 0.5, 100, 300)
     # vgg16.train()
+
+    lstm = LSTM(images, labels, images_test, labels_test, keep_pb=0.5, batch_size=100, epoch_size=500)
+    lstm.train_network()
 
 
 if __name__ == '__main__':
